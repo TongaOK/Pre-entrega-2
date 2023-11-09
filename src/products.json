@@ -1,11 +1,20 @@
 [
 	{
-		"title": "prueba",
-		"description": "prueba",
+		"title": "producto",
+		"description": "nuevo",
 		"price": "1",
 		"thumbnail": "*",
 		"code": "1",
 		"stock": "1",
-		"id": "95486225-8456-4749-83e7-fe3014706c64"
+		"id": "fe69861a-03d3-49c9-a7fd-a4dce6e47dfd"
+	},
+	{
+		"title": "aloja",
+		"description": "oh",
+		"price": "1",
+		"thumbnail": "*",
+		"code": "2",
+		"stock": "3",
+		"id": "d694568c-d64c-44ac-b42e-491b26f88176"
 	}
 ]

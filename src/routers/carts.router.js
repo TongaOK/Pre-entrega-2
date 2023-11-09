@@ -1,11 +1,35 @@
 import { Router } from "express";
-import CartManager from "../utils/cartManager.js";
-import ProductManager from "../utils/productManager.js";
+import CartModel from "../models/cart.model.js";
+//import CartManager from "../utils/cartManager.js";
+//import ProductManager from "../utils/productManager.js";
 const router = Router();
-const cartManager = new CartManager("./carts.json");
-const productManager = new ProductManager("./products.json");
+//const cartManager = new CartManager("./carts.json");
+//const productManager = new ProductManager("./products.json");
 
-router.post("/", async (req, res) => {
+router.put('/:cid', async (req, res) => {
+  const cartId = req.params.cid;
+  const { products } = req.body; // Debes enviar un arreglo de productos
+
+  try {
+    const cart = await CartModel.findById(cartId);
+    console.log(cart);
+    if (!cart) {
+      return res.status(404).json({ error: 'Carrito no encontrado' });
+    }
+
+    // Actualizar los productos del carrito
+    cart.products = products;
+    await cart.save();
+
+    res.json({ message: 'Carrito actualizado con nuevos productos' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al actualizar el carrito' });
+  }
+});
+
+
+/*router.post("/", async (req, res) => {
   const cart = await cartManager.addCart();
   res.json(cart);
 });
@@ -33,6 +57,6 @@ router.post("/:cid/products/:pid", async (req, res) => {
     parseInt(req.params.pid)
   );
   res.status(200).json({ message: "Producto agregado al carrito" });
-});
+});*/
 
 export default router;

@@ -1,11 +1,14 @@
 import http from "http";
 import { Server } from "socket.io";
 import app from "./app.js";
+import { init } from './db/mongodb.js';
 
 const server = http.createServer(app);
 const io = new Server(server);
 const PORT = 8080;
 let serverSocket;
+
+await init();
 
 io.on("connection", (socket) => {
   console.log("a user connected");

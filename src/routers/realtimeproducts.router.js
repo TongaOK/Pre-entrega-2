@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
       products = products.slice(0, limitNumber);
     }
 
-    res.render("realtimeproducts", { layout: "index", products: products });
+    res.render("realtimeproducts", { layout: "main", products: products });
   } catch (error) {
     res.status(500).json({ error: "Error interno del servidor" });
   }
