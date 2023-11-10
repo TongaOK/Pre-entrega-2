@@ -12,9 +12,9 @@ router.get('/', async (req, res) => {
   }
   const result = await ProductModel.paginate(criteria, opts);
   console.log(result);
-  //res.render('products', buildResponse({ ...result, group, sort }));
-  const response = buildResponse({ ...result, group, sort });
-  res.json(response);
+  res.render('products', buildResponse({ ...result, group, sort }));
+  /*const response = buildResponse({ ...result, group, sort });
+  res.json(response); */
 });
 
 const buildResponse = (data) => {

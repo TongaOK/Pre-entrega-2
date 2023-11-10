@@ -6,11 +6,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
     />
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <main class="container">
-      
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
 <table id="main" role="grid">
   <tr>
     <th>Title</th>
@@ -19,18 +18,19 @@
     <th>Thumbnail</th>
     <th>Stock</th>
     <th>Code</th>
+    <th>Quantity</th>
   </tr>
-         {{#each payload}}
+         {{#each products}}
     <tr>
-      <td>{{this.title}}</td>
-      <td>{{this.description}}</td>
-      <td>{{this.price}}</td>
-      <td>{{this.thumbnail}}</td>
-      <td>{{this.stock}}</td>
-      <td>{{this.code}}</td>
+      <td>{{this.product.title}}</td>
+      <td>{{this.product.description}}</td>
+      <td>{{this.product.price}}</td>
+      <td>{{this.product.thumbnail}}</td>
+      <td>{{this.product.stock}}</td>
+      <td>{{this.product.code}}</td>
+      <td>{{this.quantity}}</td>
     </tr>
   {{/each}}
   </table>
-    </main>
-  </body>
+</body>
 </html>

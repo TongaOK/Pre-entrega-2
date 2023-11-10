@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const URI = 'mongodb+srv://Tonga:Tonga@cluster0.5aeqq2q.mongodb.net/?retryWrites=true&w=majority';
+const URI = process.env.MONGODB_URI;
 
 export const init = async () => {
   try {

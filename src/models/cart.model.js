@@ -5,7 +5,7 @@ import mongoosePaginate from "mongoose-paginate-v2";
 const cartSchema = new mongoose.Schema({
   products: [
     {
-      producto: { type: mongoose.Schema.Types.ObjectId, ref: "Producto" },
+      product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
       quantity: Number,
     },
   ], // Referencia al modelo Producto
