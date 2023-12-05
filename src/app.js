@@ -32,7 +32,7 @@ app.set("view engine", "handlebars");
 
 app.use("/", homeRouter);
 app.use("/api/products", productsRouter);
-app.use("/api/carts", cartsRouter);
+app.use("/api/carts/", cartsRouter);
 app.use("/realtimeproducts", RTPRouter);
 
 
