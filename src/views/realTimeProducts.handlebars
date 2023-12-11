@@ -108,9 +108,9 @@
         li.appendChild(priceElement)
         li.appendChild(codeElement)
         li.appendChild(stockElement)
-        li.setAttribute("id", `producto-${addedProduct.id}`)
+        li.setAttribute("id", `producto-${addedProduct._id}`)
         buttonElement.addEventListener("click", () => {
-            deleteProduct(addedProduct.id)
+            deleteProduct(addedProduct._id)
         })
         buttonElement.innerHTML = "Borrar Producto"
         li.appendChild(buttonElement)
@@ -125,6 +125,7 @@
         }
 
         socket.on("deleteProduct", (productId) => {
+            console.log(productId)
             const li = document.getElementById(`producto-${productId}`)
             li.remove()
         })

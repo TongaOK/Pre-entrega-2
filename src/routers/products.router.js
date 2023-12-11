@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import ProductModel from '../models/product.model.js';
+import io from "../server.js";
 
 const router = Router();
 
@@ -15,6 +16,33 @@ router.get('/', async (req, res) => {
   res.render('products', buildResponse({ ...result, group, sort }));
   /*const response = buildResponse({ ...result, group, sort });
   res.json(response); */
+});
+
+router.post("/", async (req, res) => {
+  const product = req.body;
+  console.log(product);
+
+  const addedProduct = await ProductModel.create(product);
+  console.log(addedProduct);
+  io.emit("newProduct", addedProduct);
+  // await addedProduct.save()
+  res.status(201).json(addedProduct);
+  /*const addedProduct = await productManager.addProduct(product);
+  console.log(addedProduct);
+  io.emit("newProduct", addedProduct);
+  res.status(201).json(addedProduct);*/
+});
+
+router.delete("/:pid", async (req, res) => {
+  const productId = req.params.pid;
+  try {
+    await ProductModel.deleteOne({ _id: productId });
+    /*await productManager.deleteProduct(parseInt(productId));*/
+    io.emit("deleteProduct", productId);
+  } catch (error) {
+    console.log(error);
+  }
+  res.status(200).json({ message: "Producto eliminado" });
 });
 
 const buildResponse = (data) => {
